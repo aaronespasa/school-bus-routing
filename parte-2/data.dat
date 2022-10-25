@@ -16,6 +16,9 @@ param NumOfStops := 3;
 param NumOfFamilies := 7;
 param NumOfStudents := 8;
 
+param PriceBus := 120;
+param Pricekm := 5;
+
 
 
 param Families default 0 :
@@ -40,6 +43,5 @@ param PossibleStudentsStops default 0 :
     6   .  .  1  
     7   .  .  1 
     8   .  .  1 ;
-
 
 end;

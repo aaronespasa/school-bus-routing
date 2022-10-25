@@ -6,7 +6,9 @@ param EdgesCost{1..NumOfNodes,1..NumOfNodes};
 param MaxNumBuses;
 param BusMaxCapacity;
 param NumOfStops;
-
+param Stops{1..NumOfStops};
+param PriceBus;
+param Pricekm;
 
 
 param NumOfStudents;
@@ -32,7 +34,8 @@ set Vary := {(i,j) in Students cross MyStops };
 
 # Decision Variables
 var x{(i,j) in Edges} binary;
-var y{(i,j) in Vary} binary;
+var y{(i,j) in Edges} integer, >=0;
+var z{(i,j) in Vary} binary;
 
 
 # Objective Function
@@ -48,21 +51,18 @@ s.t. only_one_route_from_node{i in InternalNodes}: sum{j in NodesNoParking : i !
 
 s.t. all_nodes_visited{j in InternalNodes}: sum{i in NodesNoEnd : i != j} x[i,j] = 1;
 
-
 s.t. avoid_returning{i in InternalNodes, j in InternalNodes : i != j}: x[i,j] + x[j,i] <= 1;
 
-/* TWe need to find a way to make things linear, we can not multiply decision variables */
-s.t. capacity1: x[1, 2] * (sum{i in Students} y[i,1]) + x[2, 3] * (sum{i in Students} y[i,2]) + x[3, 4] * (sum{i in Students} y[i,3]) <= BusMaxCapacity;
-s.t. capacity2: x[1, 4] * (sum{i in Students} y[i,3]) + x[4, 3] * (sum{i in Students} y[i,2]) + x[3, 2] * (sum{i in Students} y[i,1]) <= BusMaxCapacity;
-s.t. capacity3: x[1, 4] * (sum{i in Students} y[i,3]) + x[4, 2] * (sum{i in Students} y[i,1]) + x[2, 3] * (sum{i in Students} y[i,2]) <= BusMaxCapacity;
-s.t. capacity4: x[1, 2] * (sum{i in Students} y[i,1]) + x[2, 4] * (sum{i in Students} y[i,3]) + x[4, 3] * (sum{i in Students} y[i,2]) <= BusMaxCapacity;
-s.t. capacity5: x[1, 3] * (sum{i in Students} y[i,2]) + x[3, 2] * (sum{i in Students} y[i,1]) + x[2, 4] * (sum{i in Students} y[i,3]) <= BusMaxCapacity;
-s.t. capacity6: x[1, 3] * (sum{i in Students} y[i,2]) + x[3, 4] * (sum{i in Students} y[i,3]) + x[4, 2] * (sum{i in Students} y[i,1]) <= BusMaxCapacity;
 
 
-s.t. student_stop{ j in  Students}: sum {i in  MyStops} y[j,i]*PossibleStudentsStops[j,i] = 1;
-s.t. one_stop_student{ j in Students}: sum {i in  MyStops} y[j,i] = 1;
-s.t. one_stop_family{i in Students, k in Students, m in MyStops, j in NumFamilies}: (1-(Families[i,j]-Families[k,j]))*(1-(y[i,m]-y[k,m])) = 1; 
+s.t. max_capacity_in_nodes{j in InternalNodes}: sum{i in NodesNoEnd : i != j} y[i,j] + (sum { i in Students}  z[i,j-1]) - sum{i in NodesNoParking : i != j} y[j,i] = 0;
+s.t. max_capacity_in_routes_beginning{j in InternalNodes}: y[1,j] - x[1,j]*BusMaxCapacity <= 0;
+s.t. max_capacity_in_routes_ending{i in InternalNodes}: y[i,NumOfNodes] - x[i,NumOfNodes]*BusMaxCapacity <= 0; 
+s.t. max_capacity_in_router_internal{i in InternalNodes, j in InternalNodes : i != j}: y[i,j] - x[i,j]*BusMaxCapacity <= 0;
+
+s.t. student_stop{ j in  Students}: sum {i in  MyStops} z[j,i]*PossibleStudentsStops[j,i] = 1;
+s.t. one_stop_student{ j in Students}: sum {i in  MyStops} z[j,i] = 1;
+s.t. one_stop_family{i in Students, k in Students, m in MyStops, j in NumFamilies}: (1-(Families[i,j]-Families[k,j]))*(1-(z[i,m]-z[k,m])) = 1; 
 solve;
 
 /* We need to find a way so stops do not need to go trought them if no students on it  */
