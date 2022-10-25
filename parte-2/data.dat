@@ -10,7 +10,7 @@ param EdgesCost default 999 :
     5   .   6   7   4   0;
 
 param MaxNumBuses := 3;
-param BusMaxCapacity := 20;
+param BusMaxCapacity := 4;
 
 param NumOfStops := 3;
 param NumOfFamilies := 7;
@@ -42,6 +42,6 @@ param PossibleStudentsStops default 0 :
     5   1  1  1 
     6   .  .  1  
     7   .  .  1 
-    8   .  .  1 ;
+    8   .  .  1;
 
 end;
