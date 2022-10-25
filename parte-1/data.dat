@@ -1,0 +1,21 @@
+data;
+
+param NumOfNodes := 5;
+param EdgesCost default 999 :
+        1   2   3   4   5 :=
+    1   0   8   10  10  .
+    2   8   0   3   7   6
+    3   10  3   0   5   7
+    4   10  7   5   0   4
+    5   .   6   7   4   0;
+
+param MaxNumBuses := 3;
+param BusMaxCapacity := 20;
+
+param NumOfStops := 3;
+param Stops =
+    1 15
+    2 5
+    3 10;
+
+end;
