@@ -13,9 +13,14 @@ param MaxNumBuses := 3;
 param BusMaxCapacity := 20;
 
 param NumOfStops := 3;
-param Stops =
+param Stops :=
     1 15
     2 5
     3 10;
+
+
+
+param PriceBus := 120;
+param Pricekm := 5;
 
 end;
