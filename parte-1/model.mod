@@ -26,7 +26,7 @@ minimize TotalCost: Pricekm * sum{(i,j) in Edges} EdgesCost[i,j]*x[i,j] + PriceB
 
 
 # Constraints
-/* s.t. starting_buses: sum{i in InternalNodes} x[1,i] <= MaxNumBuses; */
+s.t. starting_buses: sum{i in InternalNodes} x[1,i] <= MaxNumBuses;
 s.t. routes_ending: sum{i in InternalNodes} x[1,i] - sum{i in InternalNodes} x[i,NumOfNodes] = 0;
 s.t. only_one_route_from_node{i in InternalNodes}: sum{j in NodesNoParking : i != j} x[i,j] <= 1;
 s.t. all_nodes_visited{j in InternalNodes}: sum{i in NodesNoEnd : i != j} x[i,j] = 1;
