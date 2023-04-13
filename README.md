@@ -3,9 +3,9 @@ Esta es la primera práctica de la asignatura de Heurística y Optimización de 
 
 ## 𝌞 Overview
 Este trabajo se compone de tres tareas:
-1. LibreOffice Calc: Modelizar un caso concreto y resolverlo en una hoja de cálculo -> ver directorio **parte-1**.
-2. GLPK: Modelizar un caso más general y resolverlo utilizando GLPK y Mathprog como lenguaje -> ver directorio **parte-2**.
-3. Interpretación de los resultados -> ver archivo **memoria.pdf".
+1. LibreOffice Calc: Modelizar un caso concreto y resolverlo en una hoja de cálculo -> ver directorio [parte-1](https://github.com/aaronespasa/school-bus-routing/tree/main/parte-1).
+2. GLPK: Modelizar un caso más general y resolverlo utilizando GLPK y Mathprog como lenguaje -> ver directorio [parte-2](https://github.com/aaronespasa/school-bus-routing/tree/main/parte-2).
+3. Interpretación de los resultados -> ver archivo **[memoria.pdf](https://github.com/aaronespasa/school-bus-routing/blob/main/memoria.pdf)**.
 
 ## 🛠 Getting Started
 Clonamos el proyecto utilizando HTTPS y navegamos dentro de este proyecto una vez se clone:
