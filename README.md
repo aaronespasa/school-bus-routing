@@ -63,4 +63,4 @@ Tras esto, si queremos ejecutar el código de glpk, podemos utilizar:
 $ glpsol -m parte-1/model.mod -d parte-1/data.dat
 ```
 
-## Hecho con ❤️ y ☕️ por Aarón Espasandín y Alejandra Galán
+## Made by Alejandra Galán & Aarón Espasandín
