@@ -1,6 +1,6 @@
-# Programación Lineal: Resolución del problema de enrutamiento de buses escolares 🚌👨‍🏫
+# Linear Programming: Solving the school bus routing problem 🚌👨‍🏫
 
-Este proyecto pretende cumplir dos retos divididos en dos secciones: la Parte 1 y la Parte 2.
+This project aims to meet two challenges divided into two sections: Part 1 and Part 2.
 
 ### Parte 1 (Calc): 
 The first problem to be solved is the generation of the routes that buses must follow to pick up students at their stops and take them to school. The figure shows the problem to be solved. The buses that perform the routes leave the parking lot every morning. Each one of them picks up the students from the corresponding stops and takes them to school.
