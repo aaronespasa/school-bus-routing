@@ -40,7 +40,7 @@ The school administration is considering redistributing students at stops to fur
 5. The number of students at a stop cannot exceed the bus capacity.
 ![image_6483441](https://user-images.githubusercontent.com/99278460/232198787-a2794239-c130-49eb-8fce-f43a0ecd5193.JPG)
 
-#### El *objetivo* de esta parte será el siguiente:
+#### The objective of this part will be the following:
 The objective of Part 1 is maintained.
 
 #### Note : 
